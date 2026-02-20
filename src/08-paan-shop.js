@@ -46,17 +46,41 @@
  *   updatePrices({meetha:30, saada:20}, 10)              // => {meetha:40, saada:30}
  */
 export function createPaanOrder(basePaan, customizations) {
+  if (typeof basePaan !== "object" || basePaan === null || Array.isArray(basePaan)) {
+    return {};
+  } 
+  if (typeof customizations !== "object" || customizations === null || Array.isArray(customizations)) {
+    return Object.assign({}, basePaan);
+  }
+  return Object.assign({}, basePaan, customizations);
+
   // Your code here
 }
 
 export function freezeMenu(menu) {
+  if (typeof menu !== "object" || menu === null || Array.isArray(menu)) {
+    return {};
+  }
+  return Object.freeze(menu);
+
   // Your code here
 }
 
 export function updatePrices(menu, increase) {
-  // Your code here
+  if (typeof menu !== "object" || menu === null || Array.isArray(menu) || typeof increase !== "number") {
+    return {};
+  }
+  const entries = Object.entries(menu);
+  const updatedEntries = entries.map(([key, value]) => [key, value + increase]);
+  return Object.fromEntries(updatedEntries);
 }
 
 export function mergeDailySpecials(regularMenu, specialsMenu) {
-  // Your code here
+  if (typeof regularMenu !== "object" || regularMenu === null || Array.isArray(regularMenu)) {
+    regularMenu = {};
+  }
+  if (typeof specialsMenu !== "object" || specialsMenu === null || Array.isArray(specialsMenu)) {
+    specialsMenu = {};
+  }
+  return {...regularMenu, ...specialsMenu};
 }

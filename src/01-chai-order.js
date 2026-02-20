@@ -46,21 +46,54 @@
  *   hasSpecialIngredient("Elaichi Chai", "elaichi")  // => true
  */
 export function getChaiOrderLength(order) {
-  // Your code here
+  const expectedtype = 'string';
+  if (typeof order !== expectedtype) {
+    return -1;
+  }
+  return order.trim().length;
 }
 
 export function shoutChaiOrder(order) {
-  // Your code here
-}
+  const expectedtype = 'string';
+  if (typeof order !== expectedtype || order === "") { 
+    return "";
+  } 
+  // var orders = order.trim();
+  // var orderUpperCase = orders.toUpperCase();
+    return order.trim().toUpperCase();
+  }
+
 
 export function whisperChaiOrder(order) {
-  // Your code here
+  // var orders = order.trim();
+  // var orderLowerCase = orders.toLowerCase();
+  const expectedtype = 'string';
+  if (typeof order !== expectedtype || order === "") {
+    return "";
+  }  else {
+    return order.trim().toLowerCase();
+  }   
 }
 
 export function hasSpecialIngredient(order, ingredient) {
-  // Your code here
+  // var order1 = order.toLowerCase();
+  // var ingredient1 = ingredient.toLowerCase();
+  // merge = order1.includes(ingredient1);
+  const expectedtype = 'string';
+  if (typeof order !== expectedtype || typeof ingredient !== expectedtype) {
+    return false;
+  } else {
+    return order.toLowerCase().includes(ingredient.toLowerCase());
+  }
 }
 
 export function getFirstAndLastChar(order) {
-  // Your code here
+  // var orders = order.trim();
+  // var firstChar = orders.charAt(0);
+  // var lastChar = orders.at(-1);
+  const expectedtype = 'string';
+  if (typeof order !== expectedtype || order.trim() === "") {
+    return null;
+  }
+    return { first: order.trim().charAt(0), last: order.trim().at(-1) };   
 }
